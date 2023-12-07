@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img onclick="setInterval(snakeMove, 5)" id="Snake" src="Snake.png"
+        style="position: absolute; height: 180px; border-radius: 250px; width: 250px; top: 300px; left: 180px;">
+    <img onclick="setInterval(eagleMove, 10)" id="Eagle" src="Eagle.png"
+        style="position: relative; height: 180px; border-radius: 250px; width: 250px;">
+
+
+    <script>
+        let eaglePos = [0, 0, 1, 1] // array of the x, y, location and the the x, y, direction
+        let snakePos = [180, 300, 1, 1] // array of the x, y, location and the the x, y, direction
+
+        const eagleMove=() => {
+            if (window.screen.width - 250 > eaglePos[0] + eaglePos[2] && eaglePos[0] + eaglePos[2] > -1) {
+                eaglePos[0] += eaglePos[2]
+            }else{
+                eaglePos[2] = -eaglePos[2]
+            }
+            if (window.screen.height - 180 > eaglePos[1] + eaglePos[3] && eaglePos[1] + eaglePos[3] > -1) {
+                eaglePos[1] += eaglePos[3]
+            }else{
+                eaglePos[3] = -eaglePos[3]
+            }
+            Eagle.style.left = `${eaglePos[0]}px`
+            Eagle.style.top = `${eaglePos[1]}px`
+        }
+
+        const snakeMove=() => {
+            if (window.screen.width -250 > snakePos[0] + snakePos[2] && snakePos[0] + snakePos[2] > -1) {
+                snakePos[0] += snakePos[2]
+            }else{
+                snakePos[2] = -snakePos[2]
+            }
+            if (window.screen.height - 180 > snakePos[1] + snakePos[3] && snakePos[1] + snakePos[3]> -1) {
+                snakePos[1] += snakePos[3]
+            }else{
+                snakePos[3] = -snakePos[3]
+            }
+            Snake.style.left = `${snakePos[0]}px`
+            Snake.style.top = `${snakePos[1]}px`
+        }
+
+        
+        let numLst = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        numLst.forEach((num) => {
+            if (num % 2 == 0) {
+                console.log(num);
+            }
+        })
+    </script>
+
+</body>
+
+</html>
